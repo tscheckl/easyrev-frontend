@@ -1,0 +1,61 @@
+<div id="new_course">
+		<h1>{{data.update ?'Kurs bearbeiten' :'Neuen Kurs anlegen'}}</h1>
+	<form #newUserForm="ngForm">
+		<mat-form-field>
+			<input matInput class="form-control" 
+				placeholder="Kursname" 
+				[(ngModel)]="course.courseName" 
+				name="courseName" 
+				required>
+		</mat-form-field>
+
+		<mat-form-field>
+			<mat-select placeholder="Kursleiter auswählen" [(value)]="owners" name="owners" multiple>
+				<mat-option *ngFor="let owner of ownerList" [value]="owner">{{owner.firstName}} {{owner.lastName}}</mat-option>
+			</mat-select>
+		</mat-form-field>
+
+		<mat-form-field>
+			<mat-select placeholder="User auswählen" [(value)]="users" name="users" multiple>
+				<mat-option *ngFor="let user of userList" [value]="user">{{user.firstName}} {{user.lastName}}</mat-option>
+			</mat-select>
+		</mat-form-field>
+    </form>
+    <div>
+        <h1>Bewertungskriterien</h1>
+        <div class="criteria" *ngFor="let crit of availableCriteria">
+            <mat-form-field class="rating-name">
+                <input matInput class="form-control" 
+                    placeholder="Name"
+                    [(ngModel)]="crit.name">
+            </mat-form-field>
+            
+            <button (click)="removeCriteria(crit)" mat-button color="accent" class="remove-button" matTooltip="Kriterium entfernen" matTooltipPosition="below">
+                <mat-icon>delete_forever</mat-icon>
+            </button>
+    
+            <mat-form-field>
+                <textarea matInput class="form-control" 
+                    placeholder="Beschreibung"
+					[(ngModel)]="crit.description">
+				</textarea>
+            </mat-form-field>
+        </div>
+        <button (click)="addCriteria()" mat-button color="accent" class="add-button" matTooltip="Kriterium hinzufügen" matTooltipPosition="below">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+    <!-- <div>
+        <h1>Phase setzen</h1>
+        <mat-form-field>
+            <mat-select placeholder="Phase auswählen" [(ngModel)]="course.phase">
+                <mat-option *ngFor="let phase of phases" [value]="phase.value">
+                {{phase.viewValue}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div> -->
+	<mat-dialog-actions>
+		<button (click)="createCourse()" mat-raised-button color="accent">{{data.update ?'Aktualisieren' :'Erstellen'}}</button>
+	</mat-dialog-actions>
+</div>

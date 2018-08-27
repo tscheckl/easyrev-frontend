@@ -1,0 +1,50 @@
+@import "src/themeColors.scss";
+
+#topnav {
+	background-color: $accent;
+	color: $primaryDarken4;
+	position: relative;
+	z-index: 2;
+	box-shadow: none !important;
+
+	h1 {
+		font-size: 1.5em;
+		letter-spacing: -2px;
+		cursor: default;
+	}
+
+	span {
+		p {
+			font-size: 0.8em;
+		}
+	}
+
+	a {
+		color: $primaryDarken4;
+		text-decoration: none;
+	}
+	
+	.nav-item {
+		font-size: 0.8em;
+		padding-top: 5px;
+		padding-bottom: 5px;
+	}
+
+	.icon-item {
+		min-width: 40px;
+		margin-left: 10px;
+	}
+
+	.user-information {
+		font-size: 14px;
+	}
+
+	#course-button {
+		margin: 0px 20px;
+		padding-left: 6px;
+	}
+
+	.flex {
+		flex: 1;
+	}
+}

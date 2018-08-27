@@ -1,0 +1,16 @@
+<div id="user_dialog" *ngIf="!loading">
+	<h1>{{data?.firstName}} {{data?.lastName}}</h1>
+	<p><mat-icon>email</mat-icon><span class="bold">Email: </span> <span>{{data?.email}}</span></p>
+	<p><mat-icon>group</mat-icon>
+		<span class="bold">Role: </span> 
+		<span *ngIf="data.role == 'STUDENT'">Student</span>
+		<span *ngIf="data.role == 'PROF'">Professor</span>
+		<span *ngIf="data.role == 'ADMIN'">Admin</span>
+	</p>
+	<button *ngIf="user.role === 'ADMIN' && user.userId !== data.userId" (click)="deleteUser(data.userId)" mat-button color="accent" class="delete-button" matTooltip="User löschen" matTooltipPosition="below">
+		<mat-icon>delete</mat-icon>
+	</button>
+	<button *ngIf="user.role === 'ADMIN' || user.userId === data.userId"  (click)="updateUser(data)" mat-button color="accent" class="update-button" matTooltip="User bearbeiten" matTooltipPosition="below">
+		<mat-icon>edit</mat-icon>
+    </button>
+</div>

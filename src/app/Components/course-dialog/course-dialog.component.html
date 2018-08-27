@@ -1,0 +1,31 @@
+<div id="course_dialog">
+	<h1>{{data.courseName}}</h1>
+	<p class="phase">Die Gruppe befindet sich aktuell in 
+		<b> Phase 
+			<span *ngIf="data.phase == 'PHASE1'">1</span>
+			<span *ngIf="data.phase == 'PHASE2'">2</span>
+			<span *ngIf="data.phase == 'PHASE3'">3</span>
+		</b>
+	</p>
+	<h3><mat-icon>supervisor_account</mat-icon> <span>Kursleiter:</span></h3>
+	<ul>
+		<li *ngFor="let owner of ownerList">{{owner.firstName}} {{owner.lastName}}</li>
+	</ul>
+	<h3><mat-icon>group</mat-icon> <span>Kursteilnehmer:</span></h3>
+	<ul>
+		<li *ngFor="let user of userList">{{user.firstName}} {{user.lastName}}</li>
+	</ul>
+	<h3><mat-icon>rate_review</mat-icon> <span>Bewertungskriterien des Kurses:</span></h3>
+	<ul class="criteria">
+		<li *ngFor="let crit of data.evaluationTemplates">
+			<h4>{{crit.name}}</h4>
+			<p>{{crit.description}}</p>
+		</li>
+	</ul>
+	<button (click)="deleteCourse(data.courseId)" mat-button color="accent" class="delete-button" matTooltip="Kurs löschen" matTooltipPosition="below">
+		<mat-icon>delete</mat-icon>
+	</button>
+	<button (click)="updateCourse(data)" mat-button color="accent" class="update-button" matTooltip="Kurs bearbeiten" matTooltipPosition="below">
+		<mat-icon>edit</mat-icon>
+	</button>
+</div>

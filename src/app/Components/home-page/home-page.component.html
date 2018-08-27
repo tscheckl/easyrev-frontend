@@ -1,0 +1,108 @@
+<div class="home_page">
+
+	<div id="menu">
+		<div *ngFor="let button of buttons">
+			<button mat-raised-button routerLink="{{button.routerLink}}" matTooltip="{{button.tooltip}}" matTooltipPosition="below">
+				<mat-icon>{{button.icon}}</mat-icon>
+			</button>
+		</div>
+		<!-- <div>
+			<button mat-raised-button routerLink="/" matTooltip="Eigene Paper" matTooltipPosition="below">
+				<mat-icon>description</mat-icon>
+			</button>
+		</div>
+		<div>
+			<button mat-raised-button routerLink="/" matTooltip="Eigene Reviews" matTooltipPosition="below">
+				<mat-icon>thumbs_up_down</mat-icon>
+			</button>
+		</div>
+		<div>
+			<button mat-raised-button routerLink="/" matTooltip="Eigene Gruppen" matTooltipPosition="below">
+				<mat-icon>group</mat-icon>
+			</button>
+		</div>
+		<div>
+			<button mat-raised-button routerLink="/" matTooltip="Best Paper" matTooltipPosition="below">
+				<mat-icon>stars</mat-icon>
+			</button>
+		</div>
+		<div>
+			<button mat-raised-button routerLink="/papers" matTooltip="Alle Paper" matTooltipPosition="below">
+				<mat-icon>format_list_bulleted</mat-icon>
+			</button>
+		</div>
+		<div>
+			<button mat-raised-button routerLink="/reviews" matTooltip="Alle Reviews" matTooltipPosition="below">
+				<mat-icon>format_list_numbered</mat-icon>
+			</button>
+		</div>
+		<div>
+			<button mat-raised-button routerLink="/users" matTooltip="Alle User" matTooltipPosition="below">
+				<mat-icon>contacts</mat-icon>
+			</button>
+		</div>
+		<div>
+			<button mat-raised-button routerLink="/" matTooltip="Account" matTooltipPosition="below">
+				<mat-icon>person</mat-icon>
+			</button>
+		</div> -->
+	</div>
+
+	<div id="group_list">
+		<mat-card class="info_list">
+			<mat-card-header>
+				<mat-card-title>Eigene Gruppen</mat-card-title>
+			</mat-card-header>
+			<mat-list dense>
+				<mat-list-item *ngFor="let group of groups">
+					<mat-icon mat-list-icon>group</mat-icon>
+					<h4 mat-line>{{group.name}}</h4>
+					<p mat-line>Phase {{group.phase}}</p>
+					<p mat-line>{{group.aufgabe}}</p>
+					<button mat-button color="accent">Zur Gruppe</button>
+				</mat-list-item>
+			</mat-list>
+			<button mat-button color="accent">Alle Gruppen</button>
+		</mat-card>
+	</div>
+
+	<div id="paper_list">
+		<mat-card class="info_list">
+			<mat-card-header>
+				<mat-card-title>Eigene Paper</mat-card-title>
+			</mat-card-header>
+			<mat-card-content>
+				<mat-list dense>
+					<mat-list-item *ngFor="let paper of papers">
+						<mat-icon mat-list-icon>description</mat-icon>
+						<h4 mat-line>{{paper.name}}</h4>
+						<p mat-line>Bewertung: {{paper.bewertung}}</p>
+						<button mat-button color="accent">Zum Paper</button>
+					</mat-list-item>
+				</mat-list>
+				<button mat-button color="accent">Alle Paper</button>
+			</mat-card-content>
+		</mat-card>
+	</div>
+
+	<mat-card class="info_card">
+		<mat-card-content>
+			<p>Abzugebende Paper:</p>
+			<div class="circle">
+				<h1>1</h1>
+			</div>
+			<button mat-button color="accent">Zum Paper Bereich</button>
+		</mat-card-content>
+	</mat-card>
+
+	<mat-card class="info_card">
+		<mat-card-content>
+			<p>Ausstehende Reviews:</p>
+			<div class="circle">
+				<h1>13</h1>
+			</div>
+			<button mat-button color="accent">Zum Review Bereich</button>
+		</mat-card-content>
+	</mat-card>
+
+</div>

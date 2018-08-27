@@ -1,0 +1,44 @@
+@import "src/themeColors";
+
+#review_list {
+	.mat-toolbar {
+		position: sticky;
+		top: 0;
+		color: $primaryLighten5;
+		background-color: $primaryDarken3;
+	}
+	
+	.example-table-container {
+		max-width: 1000px;
+		margin: 30px auto;
+	}
+
+	.mat-row {
+		cursor: pointer;
+
+		&:hover {
+			background-color: $primaryLighten4;
+		}
+	}
+	
+	.mat-cell {
+		padding-right: 20px;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+	
+	.mat-header-cell.mat-sort-header-sorted {
+	  color: black;
+	}
+	
+	.example-header {
+		background-color: white;
+		min-height: 64px;
+		padding: 8px 24px 0;
+	}
+	
+	.mat-form-field {
+		font-size: 14px;
+		width: 100%;
+	}	
+}

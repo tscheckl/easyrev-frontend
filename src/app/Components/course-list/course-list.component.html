@@ -1,0 +1,28 @@
+<div id="course_list">
+	<div class="example-table-container mat-elevation-z8">
+
+		<div class="example-header">
+			<mat-form-field>
+				<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Suchbegriff eingeben">
+			</mat-form-field>
+		</div>
+
+		<mat-table #table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)">
+			<ng-container matColumnDef="courseName">
+				<mat-header-cell *matHeaderCellDef mat-sort-header="courseName"> Kursname </mat-header-cell>
+				<mat-cell *matCellDef="let element"> {{element.courseName}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="coursePhase">
+                <mat-header-cell *matHeaderCellDef mat-sort-header="phase"> Phase </mat-header-cell>
+                <mat-cell *matCellDef="let element"> 
+                    <p *ngIf="element.phase == 'PHASE1'">Phase 1</p>
+                    <p *ngIf="element.phase == 'PHASE2'">Phase 2</p>
+                    <p *ngIf="element.phase == 'PHASE3'">Phase 3</p>
+                </mat-cell>
+			</ng-container>
+
+			<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+			<mat-row (click)="showCourse(row)" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+		</mat-table>
+	</div>
+</div>

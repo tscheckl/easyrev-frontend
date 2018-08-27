@@ -1,0 +1,59 @@
+@import "easyRev-theme.scss";
+@import "themeColors.scss";
+
+html, body{
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, sans-serif;
+//   background-color: rgba($color: #ffffff, $alpha: 0.1);
+}
+
+body {
+	background-image: url("./assets/images/bg.png");
+	// background-size: cover;
+	// background-repeat: no-repeat;
+}
+
+.lighten {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: rgba($color: #fff, $alpha: 0.6)
+}
+
+.page-container {
+	width: 1200px;
+	max-width: 100%;
+	margin: 20px auto;
+	padding: 20px 30px;
+	padding-bottom: 40px;
+	position: relative;
+	background-color: $primaryLighten5;
+	border-radius: 3px;
+	box-shadow: 0 5px 6px rgba(0,0,0,0.12), 0 5px 6px rgba(0,0,0,0.24);
+	z-index: 1;
+
+	h1 {
+		margin: 0;
+		font-size: 42px;
+		color: $accent;
+	}
+
+	h4 {
+		margin-top: 0;
+	}
+}
+
+.cdk-overlay-pane {
+	max-height: 95%;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.mat-dialog-container {
+	padding: 20px !important;
+}
+
+.mat-dialog-container{
+	overflow: hidden !important;
+}

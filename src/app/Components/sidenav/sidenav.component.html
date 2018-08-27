@@ -1,0 +1,19 @@
+<div id="sidenav">
+	<h1>EasyRev</h1>
+	<mat-nav-list color="primary">
+	  <a routerLink="" mat-list-item><div class="list-item">Home</div></a>
+	  <a routerLink="/papers" mat-list-item><div class="list-item">Paper</div></a>
+	  <a routerLink="/reviews" mat-list-item><div class="list-item">Reviews</div></a>
+	  <a routerLink="/users" mat-list-item><div class="list-item">User</div></a>
+	  <a routerLink="/courses" mat-list-item><div class="list-item">Kurse</div></a>
+	  <a mat-list-item (click)="openDropdown()">
+		<div class="list-item">Eigene Daten</div>
+		<mat-icon id="dropdown-icon">expand_more</mat-icon>
+	  </a>
+	  <mat-nav-list class="display-none" id="dropdown">
+		<a routerLink="" mat-list-item><div class="list-item">Eigene Paper</div></a>
+		<a routerLink="" mat-list-item><div class="list-item">Eigene Reviews</div></a>
+	  </mat-nav-list>
+	  
+	</mat-nav-list>
+</div>

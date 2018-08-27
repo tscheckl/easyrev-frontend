@@ -1,0 +1,69 @@
+<div id="course_select">
+	<div class="page-container" *ngIf="!loading">
+		<div id="header">
+			<h1>Kursauswahl</h1>
+
+			<span class="flex"></span>
+	
+			<button *ngIf="user.role === 'PROF' || user.role === 'ADMIN'" (click)="openCourseDialog()" mat-raised-button id="create-button">
+				<mat-icon>add</mat-icon>
+				Neuen Kurs erstellen
+			</button>
+		</div>
+
+		<div *ngIf="(user.role === 'PROF' || user.role === 'ADMIN') && coursesOwner.length > 0" class="courseList">
+			<h3>Kurse, die du leitest:</h3>
+			<div class="course" [routerLink]="['/course', course.courseId]" *ngFor="let course of coursesOwner; let i = index">
+				<div class="course-row">
+					<h2>{{course.courseName}}</h2>
+					<span *ngIf="course.phase != 'beendet'" class="current-phase">Kurs befindet sich aktuell in <b>{{course.phase}}</b></span>
+					<span *ngIf="course.phase == 'beendet'" class="current-phase"><b>Kurs {{course.phase}}</b></span>
+				</div>
+	
+				<div class="course-row">
+					<div class="course-owners">
+						<span>Kursleiter: </span>
+						<span *ngFor="let owner of course.courseOwners" class="course-owner">
+							{{owner.firstName}} {{owner.lastName}}
+						</span>
+					</div>
+	
+					<div class="course-members">
+						Mitglieder: {{course.courseMembers.length}}
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div *ngIf="coursesUser.length > 0" class="courseList">
+			<h3>Kurse in denen du Mitglied bist:</h3>
+			<div class="course" [routerLink]="['/course', course.courseId]" *ngFor="let course of coursesUser; let i = index">
+				<div class="course-row">
+					<h2>{{course.courseName}}</h2>
+					<span *ngIf="course.phase != 'beendet'" class="current-phase">Kurs befindet sich aktuell in <b>{{course.phase}}</b></span>
+					<span *ngIf="course.phase == 'beendet'" class="current-phase"><b>Kurs {{course.phase}}</b></span>
+				</div>
+	
+				<div class="course-row">
+					<div class="course-owners">
+						<span>Kursleiter: </span>
+						<span *ngFor="let owner of course.courseOwners" class="course-owner">
+							{{owner.firstName}} {{owner.lastName}}
+						</span>
+					</div>
+	
+					<div class="course-members">
+						Mitglieder: {{course.courseMembers.length}}
+					</div>
+				</div>
+			</div>
+        </div>
+        <div *ngIf="(coursesUser.length == 0) && (coursesOwner.length == 0) && (user.role === 'STUDENT')">
+            <h3>Du bist in keinem Kurs Mitglied.</h3>
+            <p>Kontaktiere ggf. deinen Professor oder den Admin.</p>
+        </div>
+        <div *ngIf="(coursesUser.length == 0) && (coursesOwner.length == 0) && ((user.role === 'PROF') || (user.role === 'ADMIN'))">
+            <h3>Du hast noch keinen Kurs erstellt und bist noch in keinem Kurs Mitglied.</h3>
+        </div>
+	</div>
+</div>

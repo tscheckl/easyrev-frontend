@@ -1,0 +1,70 @@
+<div id="login_page">
+	<div id="login_container">
+		<h1>EasyRev</h1>
+		<p>Die einfache peer-to-peer Review Lösung für wissenschaftliche Paper.</p>
+		<mat-button-toggle-group id="switch" value="login" #group="matButtonToggleGroup">
+			<mat-button-toggle class="switch_buttons" value="login">Anmelden</mat-button-toggle>
+			<mat-button-toggle class="switch_buttons" value="register">Registrieren</mat-button-toggle>
+		</mat-button-toggle-group>
+		
+		<div *ngIf="group.value == 'login'" id="login">
+			<form>
+				<mat-form-field class="full-width">
+					<input matInput class="form-control" placeholder="E-Mail" [(ngModel)]="email" name="email" required>
+				</mat-form-field>
+				<mat-form-field class="full-width">
+					<input matInput type="password" class="form-control" placeholder="Passwort" [(ngModel)]="password" name="password" required>   
+				</mat-form-field>
+				<div class="submit-div">
+					<button (click)="login()" mat-raised-button id="login-button" class="submit">Login</button>
+				</div>
+			</form>
+		</div>
+
+		<div *ngIf="group.value == 'register'" id="register">
+			<form>
+				<mat-form-field class="half-width">
+				<input matInput class="form-control" 
+					placeholder="Vorname" 
+					[(ngModel)]="user.firstName" 
+					name="firstName" 
+					required>
+				</mat-form-field>
+		
+				<mat-form-field class="half-width">
+					<input matInput 
+						class="form-control" 
+						placeholder="Nachname" 
+						[(ngModel)]="user.lastName"
+						name="lastName" 
+						required>
+				</mat-form-field>
+		
+				<mat-form-field class="full-width">
+					<input matInput 
+						class="form-control" 
+						placeholder="E-Mail" 
+						[(ngModel)]="user.email" 
+						name="email" 
+						required>
+				</mat-form-field>
+		
+				<mat-form-field class="full-width">
+					<input matInput 
+						type="password"
+						class="form-control" 
+						placeholder="Passwort" 
+						[(ngModel)]="user.password" 
+						(blur)="checkPassword()"
+						name="password" 
+						required>
+				</mat-form-field>
+				<span class="pw-error-message">{{pwErrorMessage}}</span>
+				<div class="submit-div">
+					<button *ngIf="user.password.length < 8 || !user.firstName || !user.lastName" mat-raised-button id="register-button" class="submit disabled">Registrieren</button>
+					<button *ngIf="user.password.length >= 8 && user.firstName && user.lastName" (click)="register()" mat-raised-button id="register-button" class="submit">Registrieren</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

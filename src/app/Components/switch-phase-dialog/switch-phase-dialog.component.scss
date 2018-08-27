@@ -1,0 +1,27 @@
+@import "src/themeColors";
+
+#switch_phase_dialog {
+	h2 {
+		color: $primaryDarken4;
+		margin-bottom: 5px;
+		font-size: 18px;
+	}
+
+	h3 {
+		margin-top: 0;
+		color: $primaryDarken1;
+		font-size: 14px;
+	}
+
+	.button-group {
+		display: flex;
+		justify-content: center;
+		color: $accent;
+		
+		button {
+			&:first-of-type {
+				margin-right: 15px;
+			}
+		}
+	}
+}

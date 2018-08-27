@@ -1,0 +1,24 @@
+<mat-toolbar id="topnav" class="mat-elevation-z4">
+	<h1>EasyRev</h1>
+	
+	<a routerLink="" id="course-link">
+		<button mat-button id="course-button" class="nav-item">
+			<mat-icon>keyboard_arrow_left</mat-icon>
+			Zur Kursauswahl
+		</button>
+	</a>
+	
+    <span class="flex"></span>
+    
+	<button (click)="showUser()" mat-button matTooltip="Information bearbeiten" matTooltipPosition="below">
+        Eingeloggt als: {{user?.firstName}} {{user?.lastName}}
+    </button>
+    <a routerLink="/admin" id="admin-link">
+		<button mat-button id="admin" class="nav-item icon-item" matTooltip="Admin-Bereich" matTooltipPosition="below">
+			<mat-icon>group</mat-icon>
+		</button>
+	</a>
+	<button (click)="logout()" mat-button id="logout" class="nav-item icon-item" matTooltip="Logout" matTooltipPosition="below">
+			<mat-icon>exit_to_app</mat-icon>
+	</button>
+</mat-toolbar>

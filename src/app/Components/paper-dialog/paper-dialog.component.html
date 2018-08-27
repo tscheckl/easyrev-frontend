@@ -1,0 +1,31 @@
+<div id="paper_dialog" *ngIf="!loading">
+	<h1>{{data.paperTitle}}</h1>
+
+	<div class="author">
+		<h3><mat-icon>person</mat-icon> Author: </h3>
+		<p>{{author?.firstName}} {{author?.lastName}}</p>
+	</div>
+	
+	<div class="category">
+		<h3><mat-icon>bookmark</mat-icon> Kategorie: </h3>	
+		<p>{{data.topic}}</p>
+	</div>
+	
+	<div class="description">
+		<h3><mat-icon>bookmark</mat-icon> Beschreibung: </h3>	
+		<p>{{data.description}}</p>
+	</div>
+
+	<button *ngIf="user.role == 'ADMIN'" (click)="deletePaper(data.paperId)" mat-button color="accent" class="delete-button" matTooltip="Paper löschen" matTooltipPosition="below">
+		<mat-icon>delete</mat-icon>
+	</button>
+	<button *ngIf="author.userId == user.userId && data.canEdit" (click)="updatePaper(data)" mat-button color="accent" class="update-button" matTooltip="Paper bearbeiten" matTooltipPosition="below">
+		<mat-icon>edit</mat-icon>
+	</button>
+	<button *ngIf="review" (click)="ratePaper(review)" mat-raised-button color="accent" class="update-button review-button" matTooltip="Paper bewerten" matTooltipPosition="below">
+		<mat-icon>rate_review</mat-icon> Bewertung abgeben
+	</button>
+	<button (click)="downloadPaper()" mat-button color="accent" class="update-button" matTooltip="Paper herunterladen" matTooltipPosition="below">
+		<mat-icon>save_alt</mat-icon>
+	</button>
+</div>

@@ -1,0 +1,88 @@
+<div id="course_page">
+	<div class="page-container" *ngIf="!loading">
+		<div id="header">
+			<h1>{{course?.courseName}}</h1>
+
+			<span class="flex"></span>
+	
+			<button *ngIf="user.role === 'PROF' || user.role === 'ADMIN'" (click)="updateCourse(course)" mat-raised-button id="update-button">
+				<mat-icon>edit</mat-icon>
+				Kurs bearbeiten
+			</button>
+
+			<button *ngIf="(user.role === 'PROF' || user.role === 'ADMIN') && currentPhase != 'beendet'" (click)="setToNextPhase()" mat-raised-button id="update-button">
+				<mat-icon>skip_next</mat-icon>
+				Kurs in die nächste Phase setzen
+			</button>
+		</div>
+		
+		<div *ngIf="currentPhase == 'Phase 1' && userRole == 'user'" id="userPhase1">
+			<p class="phase-information">Der Kurs befindet sich aktuell in <b>{{currentPhase}}</b>. Das bedeutet, du kannst dein Paper hochladen.</p>
+			<button *ngIf="!usersPaper" (click)="uploadPaper()" mat-raised-button id="upload-button">
+				<mat-icon>add</mat-icon>
+				Paper hochladen
+			</button>
+		</div>
+
+		<div *ngIf="currentPhase == 'Phase 2' && userRole == 'user'" id="userPhase2">
+			<p class="phase-information">Der Kurs befindet sich aktuell in <b>{{currentPhase}}</b>. Das bedeutet, du kannst die dir zugewiesenen Paper bewerten.</p>
+			<h3>Zugewiesene Paper</h3>
+			<div *ngFor="let paperObject of assignedPapers" (click)="showPaper(paperObject.paper)" [ngClass]="paperObject.wasReviewed ?'reviewed paperData' :'paperData'">
+				<div class="paper-info">
+					<h4>{{paperObject.paper.paperTitle}} </h4>
+					<p>{{paperObject.paper.fileName}}</p>
+				</div>
+				
+				<span class="was-reviewed" *ngIf="paperObject.wasReviewed">
+					<mat-icon>check</mat-icon>
+					<p>Bewertung abgegeben</p>
+				</span>
+			</div>
+		</div>
+
+		<div *ngIf="currentPhase == 'Phase 3' && userRole == 'user'" id="userPhase3">
+			<p class="phase-information">Der Kurs befindet sich aktuell in <b>{{currentPhase}}</b>. Das bedeutet, du kannst dir die Bewertungen anderer Kursteilnehmer deines Papers ansehen und ein überarbeitetes Paper hochladen.</p>
+			<div id="reviews">
+				<div *ngFor="let review of reviews, let i = index" (click)="showReview(review)" class="reviewData">
+					<h4>Review {{i + 1}} zu deinem Paper</h4>
+				</div>
+			</div>
+		</div>
+
+		<div *ngIf="currentPhase == 'beendet'">
+			<p class="phase-information">Der Kurs ist <b>beendet</b>.</p>
+		</div>
+		
+		<div *ngIf="finalPaper" id="finalPaper">
+			<h3>Dein Paper für die Abgabe</h3>
+			<div (click)="showPaper(finalPaper)" class="paperData">
+				<div class="paper-info">
+					<h4>{{finalPaper.paperTitle}}</h4>
+					<p>{{finalPaper.fileName}}</p>
+				</div>
+			</div>
+		</div>
+
+		<div *ngIf="usersPaper && currentPhase != 'beendet'" id="ownPaper">
+			<h3>Dein vorläufiges Paper</h3>
+			<div (click)="showPaper(usersPaper)" class="paperData">
+				<div class="paper-info">
+					<h4>{{usersPaper.paperTitle}}</h4>
+					<p>{{usersPaper.fileName}}</p>
+				</div>
+			</div>
+		</div>
+
+		<div *ngIf="userRole == 'owner'" id="ownerPhase1">
+			<p *ngIf="currentPhase != 'beendet'" class="phase-information">Der Kurs befindet sich aktuell in <b>{{currentPhase}}</b>.</p>
+			<h3>Hochgeladene Paper</h3>
+			<app-paper-list [papers]="allPapers"></app-paper-list>
+		</div>
+
+		<h3>Kursmitglieder</h3>
+		<app-user-list [users]="course.courseMembers"></app-user-list>
+
+		<h3>Kursleiter</h3>
+		<app-user-list [users]="course.courseOwners"></app-user-list>
+	</div>
+</div>

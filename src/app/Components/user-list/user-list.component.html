@@ -1,0 +1,30 @@
+<div id="user_list">
+	<div class="example-table-container mat-elevation-z8">
+
+		<div class="example-header">
+			<mat-form-field>
+				<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Suchbegriff eingeben">
+			</mat-form-field>
+		</div>
+
+		<mat-table #table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)">
+			<ng-container matColumnDef="vorname">
+				<mat-header-cell *matHeaderCellDef mat-sort-header="firstName"> Vorname </mat-header-cell>
+				<mat-cell *matCellDef="let element"> {{element.firstName}} </mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="nachname">
+				<mat-header-cell *matHeaderCellDef mat-sort-header="lastName"> Nachname </mat-header-cell>
+				<mat-cell *matCellDef="let element"> {{element.lastName}} </mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="email">
+				<mat-header-cell *matHeaderCellDef mat-sort-header="email"> Email </mat-header-cell>
+				<mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+			</ng-container>
+
+			<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+			<mat-row (click)="showUser(row)" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+		</mat-table>
+	</div>
+</div>

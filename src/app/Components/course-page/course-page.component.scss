@@ -1,0 +1,120 @@
+@import "src/themeColors.scss";
+
+#course_page {
+	.page-container {
+		button {
+			color: $primaryLighten5;
+			background-color: $accent;
+		}
+
+		b {
+			color: $accentDarken1;
+		}
+
+		#header {
+			display: flex;
+			padding-bottom: 0;
+
+			h1 {
+				margin-bottom: 0;
+				max-width: 75%;
+			}
+
+			.flex {
+				flex: 1;
+			}
+
+			#update-button {
+				align-self: flex-start;
+				margin-top: 10px;
+			}
+
+			button {
+				margin-left: 10px;
+			}
+		}
+
+		#ownPaper {
+			margin-bottom: 30px;
+		}
+
+		.paperData {
+			display: flex;
+			margin-top: 10px;
+			padding: 0px 10px;
+			padding-right: 0;
+			border-radius: 3px;
+			box-shadow: 0 3px 6px rgba(0,0,0,0.12), 0 3px 6px rgba(0,0,0,0.24);
+			cursor: pointer;
+			color: $primaryDarken3;
+			background-color: #fcfcfc;
+			transition: box-shadow .1s ease-out;
+			overflow: hidden;
+
+			&:hover {
+				box-shadow: 0 5px 10px rgba(0,0,0,0.12), 0 5px 10px rgba(0,0,0,0.24);
+			}
+
+			h4 {
+				margin-top: 16px;
+				margin-bottom: 0;
+			}
+
+			p {
+				margin-top: 0;
+			}
+		}
+
+		.paper-info {
+			flex: 5;
+		}
+
+		
+
+		.was-reviewed {
+			flex: 1;
+			display: flex;
+			float: right;
+			padding: 20px 10px;
+			padding-bottom: 0;
+			color: #fcfcfc;
+			background-color: $accentLighten1;
+
+			p {
+				margin-top: 4px;
+				margin-left: 5px;
+				height: 20px;
+			}
+		}
+
+		// .reviewed {
+		// 	background-color: $accentLighten1;
+		// 	color: #fcfcfc;
+		// }
+
+		#reviews {
+			display: flex;
+			justify-content: flex-start;
+		}
+
+		.reviewData {
+			margin: 10px 20px 20px 0px;
+			padding: 1px 10px;
+			border-radius: 3px;
+			box-shadow: 0 3px 6px rgba(0,0,0,0.12), 0 3px 6px rgba(0,0,0,0.24);
+			cursor: pointer;
+			color: $primaryDarken3;
+			background-color: #fcfcfc;
+			transition: box-shadow .1s ease-out;
+
+			&:hover {
+				box-shadow: 0 5px 10px rgba(0,0,0,0.12), 0 5px 10px rgba(0,0,0,0.24);
+			}
+
+			h4 {
+				margin-top: 16px;
+				margin-bottom: 16px;
+			}
+		}
+	}
+}

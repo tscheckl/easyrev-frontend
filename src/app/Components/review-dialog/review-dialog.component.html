@@ -1,0 +1,9 @@
+<div id="review_dialog">
+	<h1>Review</h1>
+	<div *ngFor="let evaluation of data.evaluations" class="evaluation_card">
+		<h4 class="no-margin">{{evaluation.name}}</h4>
+		<p class="no-margin">{{evaluation.description}}</p>
+		<p>{{evaluation.review}}</p>
+		<p class="no-margin">Wertung: <b>{{evaluation.rating}}</b></p>
+	</div>
+</div>

@@ -1,0 +1,33 @@
+@import 'src/themeColors';
+
+#new_user {
+	width: 800px;
+	max-width: 100%;
+	padding: 20px 100px;
+	box-sizing: border-box;
+	margin: 0 auto;
+
+	h1 {
+		font-weight: 900;
+		letter-spacing: -1px;
+		color: $accent;
+	}
+
+	.mat-form-field, .mat-slide-toggle {
+		width: 48%;
+	}
+
+	.full-width {
+		width: 97%;
+	}
+
+	.mat-slide-toggle {
+		box-sizing: border-box;
+		padding: 0 auto;
+		text-align: center;
+	}
+
+	.mat-raised-button {
+		color: $primaryLighten5;
+	}
+}

@@ -1,0 +1,32 @@
+@import "src/themeColors";
+
+#sidenav {
+	h1 {
+		color: $accentAccent3;
+		font-size: 2.8em;
+		text-align: center;
+		letter-spacing: -2px;
+	}
+
+	.mat-list-item:hover {
+		background-color: $accent;
+	}
+	
+	.list-item {
+		color: $primaryLighten5;
+		padding: 10px 60px;
+	}
+
+	.mat-icon {
+		color: $primaryLighten5;
+	}
+	
+	.display-none {
+		display: none !important;
+	}
+	
+	#dropdown {
+		padding: 0px;
+		background-color: $primaryDarken1;
+	}
+}

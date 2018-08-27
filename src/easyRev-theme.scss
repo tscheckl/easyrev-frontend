@@ -1,0 +1,11 @@
+@import '~@angular/material/_theming.scss';
+@include mat-core();
+
+$easyRev-primary: mat-palette($mat-grey);
+$easyRev-accent:  mat-palette($mat-green);
+
+$easyRev-warn:    mat-palette($mat-red);
+
+$easyRev-theme: mat-light-theme($easyRev-primary, $easyRev-accent, $easyRev-warn);
+
+@include angular-material-theme($easyRev-theme);

@@ -1,0 +1,16 @@
+<div id="admin_page">
+	<div class="page-container">
+		<div id="header">
+			<h1>Admin Übersicht</h1>
+			<span class="flex"></span>
+			<mat-form-field id="category-select">
+				<mat-select placeholder="Kategorie auswählen" [(value)]="category" (selectionChange)="changeCategory($event)" name="category">
+					<mat-option *ngFor="let category of categoryList" [value]="category">{{category}}</mat-option>
+				</mat-select>
+			</mat-form-field>
+		</div>
+		<app-user-list *ngIf="!loading && category === 'User'" [users]="data"></app-user-list>
+		<app-course-list *ngIf="!loading && category === 'Kurse'" [courses]="data"></app-course-list>
+		<app-paper-list *ngIf="!loading && category === 'Paper'" [papers]="data"></app-paper-list>
+	</div>
+</div>

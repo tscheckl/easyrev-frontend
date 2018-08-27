@@ -1,0 +1,37 @@
+<div *ngIf="!loading" id="new_review">
+	<div id="header">
+		<h1>Paper bewerten</h1>
+		<h3 class="no-margin">{{paper?.paperTitle}}</h3>
+		<p class="no-margin"><mat-icon>person</mat-icon> <b>{{author?.firstName}} {{author?.lastName}}</b></p>
+	</div>
+
+	<form #newReviewForm="ngForm">
+		<div *ngFor="let evaluation of review.evaluations; let i = index" class="evaluation_input">
+			<h4 class="no-margin">{{evaluation.name}}</h4>
+			<p class="no-margin">{{evaluation.description}}</p>
+			<mat-form-field>
+				<textarea matInput class="form-control"
+					[(ngModel)]="evaluation.review"
+					name="review-{{i}}"
+					required>
+				</textarea>
+			</mat-form-field>
+
+			<mat-form-field>
+				<input matInput class="form-control" 
+					placeholder="Rating" 
+					[(ngModel)]="evaluation.rating" 
+					name="rating-{{i}}"
+					type="number"
+					step="1"
+					min="0"
+					max="10"
+					required>
+			</mat-form-field>
+		</div>
+	</form>
+	
+	<mat-dialog-actions>
+		<button (click)="createReview()" mat-raised-button color="accent">Bewertung speichern</button>
+	</mat-dialog-actions>
+</div>

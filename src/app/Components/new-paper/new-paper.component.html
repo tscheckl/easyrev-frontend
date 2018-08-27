@@ -1,0 +1,37 @@
+<div id="new_paper">
+	<h1>{{data.update ?'Paper bearbeiten' :'Neues Paper anlegen'}}</h1>
+	<form #newPaperForm="ngForm">
+		<mat-form-field>
+			<input matInput class="form-control" 
+				placeholder="Titel" 
+				[(ngModel)]="paper.paperTitle" 
+				name="paperTitle"
+				required>
+		</mat-form-field>
+
+		<mat-form-field>
+			<input matInput 
+				class="form-control" 
+				placeholder="Kategorie" 
+				[(ngModel)]="paper.topic"
+				name="topic">
+		</mat-form-field>
+		
+		<mat-form-field>
+			<textarea matInput class="form-control" 
+				placeholder="Beschreibung"
+				[(ngModel)]="paper.description"
+				name="description"
+				required>
+			</textarea>
+		</mat-form-field>
+		
+		<h3>Paper hochladen: </h3>
+		<button type="button" color="accent" (click)="imgFileInput.click()" class="file-selector-button">{{fileLabel}}</button>
+  		<input hidden type="file" #imgFileInput (change)="onAttachingPaper($event.target.files[0])"/>
+	</form>
+	
+	<mat-dialog-actions>
+		<button (click)="createPaper()" mat-raised-button color="accent">{{data.update ?'Aktualisieren' :'Erstellen'}}</button>
+	</mat-dialog-actions>
+</div>

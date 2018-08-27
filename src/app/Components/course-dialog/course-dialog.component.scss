@@ -1,0 +1,64 @@
+@import "src/themeColors";
+
+#course_dialog {
+	width: 800px;
+	max-width: 100%;
+	padding: 20px 100px;
+	position: relative;
+	overflow: hidden;
+	
+	.mat-icon {
+		color: $accent;
+	}
+
+	h1 {
+		margin-top: 0;
+		margin-bottom: 10px;
+		color: $accent;
+		font-size: 3em;
+		letter-spacing: -3px;
+		font-weight: 900;
+	}
+
+	p {
+		display: flex;
+		margin-bottom: 10px;
+
+		span {
+			margin-top: 2px;
+			margin-left: 5px;
+			font-weight: 500;
+		}
+	}
+
+	ul {
+		margin-top: 5px;
+		li {
+			padding: 3px 0;
+
+			&:first-of-type {
+				padding-top: 0;
+			}
+		}
+	}
+
+	.criteria {
+		h4 {
+			margin: 5px;
+		}
+		
+		p {
+			font-size: 0.9em;
+		}
+	}
+
+	.phase {
+		span {
+			margin: 0;
+		}
+
+		b {
+			margin-left: 5px;
+		}
+	}
+}

@@ -1,0 +1,50 @@
+<div id="new_user">
+	<h1>{{data.update ?'User bearbeiten' :'Neuen User anlegen'}}</h1>
+	<form #newUserForm="ngForm">
+		<mat-form-field>
+			<input matInput class="form-control" 
+				placeholder="Vorname" 
+				[(ngModel)]="user.firstName" 
+				name="firstName" 
+				required>
+		</mat-form-field>
+
+		<mat-form-field>
+			<input matInput 
+				class="form-control" 
+				placeholder="Nachname" 
+				[(ngModel)]="user.lastName"
+				name="lastName" 
+				required>
+		</mat-form-field>
+
+		<mat-form-field class="full-width">
+			<input matInput 
+				class="form-control" 
+				placeholder="E-Mail Adresse" 
+				[(ngModel)]="user.email" 
+				name="email" 
+				required>
+		</mat-form-field>
+
+		<mat-form-field class="full-width">
+			<input matInput 
+				type="password"
+				class="form-control" 
+				placeholder="Passwort" 
+				[(ngModel)]="user.password" 
+				name="password" 
+				required>
+		</mat-form-field>
+
+		<mat-form-field *ngIf="loginUser.role === 'ADMIN'">
+			<mat-select placeholder="Rolle auswählen" [(value)]="role" name="role" required>
+				<mat-option *ngFor="let roleObject of roleList" [value]="roleObject">{{roleObject.displayValue}}</mat-option>
+			</mat-select>
+		</mat-form-field>
+	</form>
+	
+	<mat-dialog-actions>
+		<button (click)="createUser()" mat-raised-button color="accent">{{data.update ?'Aktualisieren' :'Erstellen'}}</button>
+	</mat-dialog-actions>
+</div>

@@ -1,0 +1,12 @@
+#admin_page {
+	.page-container {
+		#header {
+			display: flex;
+
+			.flex {
+				flex: 1;
+			}
+			padding-bottom: 0;
+		}		
+	}
+}
